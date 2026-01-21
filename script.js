@@ -33,7 +33,7 @@ if (menuBtn && menu && icon) {
   menuBtn.addEventListener("click", () => {
     menu.classList.toggle("open");
     menuOpen = !menuOpen;
-    icon.src = menuOpen ? "./assets/close.png" : "./assets/menu.png";
+    icon.src = menuOpen ? "./assets/close.svg" : "./assets/menu.svg";
   });
 }
 
