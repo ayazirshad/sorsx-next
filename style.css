@@ -881,7 +881,7 @@ button {
 .slide-track {
   display: flex;
   gap: 70px;
-  animation: scroll 30s linear infinite;
+  /* animation: scroll 30s linear infinite; */
 }
 
 .slide {
@@ -899,9 +899,9 @@ button {
   object-fit: contain;
   transition: transform 0.3s;
 }
-.slide img:hover {
+/* .slide img:hover {
   transform: translateZ(20px);
-}
+} */
 
 @keyframes scroll {
   0% {
