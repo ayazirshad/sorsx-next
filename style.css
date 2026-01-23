@@ -889,8 +889,8 @@ button {
 }
 
 .slide {
-  height: 50px;
-  width: 100px;
+  height: 20px;
+  /* width: 100px; */
   display: flex;
   align-items: center;
   perspective: 100px;
@@ -1397,7 +1397,7 @@ button {
 }
 
 .feedback-card {
-  background: #f9fafb;
+  background: #f3f5f7;
   border-radius: clamp(12px, 2vw, 24px);
   padding: clamp(16px, 2.4vw, 32px);
   border: 1px solid #eaecf0;
@@ -1751,7 +1751,7 @@ button {
 .footer-top {
   display: flex;
   gap: 80px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 .footer-logo-section {
