@@ -884,15 +884,20 @@ button {
 }
 .slide-track {
   display: flex;
+  padding-left: var(--section-px);
+  padding-right: var(--section-px);
   gap: 70px;
-  /* animation: scroll 30s linear infinite; */
+  width: calc(200px * 24); /* Large width for scrolling */
+  /* Animation handled via media queries */
 }
 
 .slide {
-  height: 20px;
-  /* width: 100px; */
+  height: 40px; /* Increased from 20px for better visibility */
+  width: 120px; /* Explicit width */
+  flex-shrink: 0; /* Prevent squashing */
   display: flex;
   align-items: center;
+  justify-content: center;
   perspective: 100px;
 }
 
@@ -912,7 +917,42 @@ button {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-130px * 6));
+    /* Adjusted to match Demo page 2 */
+    transform: translateX(calc(-170px * 8));
+  }
+}
+
+/* DESKTOP STYLES (>= 768px) */
+@media (min-width: 768px) {
+  .slide-track {
+    max-width: 1920px; /* Apply max-width only on desktop */
+    width: 100%;
+    justify-content: space-around;
+    animation: none;
+    transform: none;
+  }
+
+  /* Hide the duplicate sets (index 9 to 24) */
+  .slide:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+/* MOBILE STYLES (< 768px) */
+@media (max-width: 767px) {
+  .slide-track {
+    animation: scroll 20s linear infinite;
+    gap: 70px; /* Ensure gap is consistent */
+  }
+
+  /* Ensure all slides are visible on mobile for the loop */
+  .slide:nth-child(n + 9) {
+    display: flex;
+  }
+
+  .slider::before,
+  .slider::after {
+    display: block;
   }
 }
 
@@ -956,28 +996,24 @@ button {
 }
 
 .logo-stack {
+  display: none; /* Globally hidden */
   width: 100%;
-  display: flex;
   gap: 32px;
   flex-wrap: wrap;
   margin-top: 24px;
   justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .logo-stack {
-    display: none;
-  }
-}
+/* Removed media query that was hiding it on desktop only, as it's now hidden globally */
 
 @media (max-width: 768px) {
   .slider {
-    display: none;
+    display: grid; /* Make slider visible */
   }
 
-  .logo-stack {
+  /* .logo-stack {
     margin-bottom: 30px;
-  }
+  } */ /* Removed */
 
   .hero-image-wrapper img {
     margin-top: 0;
@@ -1377,7 +1413,7 @@ button {
 
 .feedback-container {
   display: flex;
-  align-items: center;
+  align-items: stretch; /* Stretch to match heights */
   justify-content: center;
   gap: 20px;
   /* max-width: 1100px; */
@@ -1385,13 +1421,17 @@ button {
 }
 
 .ceo-photo-wrapper {
-  height: clamp(200px, 16vw, 317px);
-  width: auto;
+  height: clamp(200px, 16vw, 317px); /* Defined height */
+  aspect-ratio: 1/1; /* 1:1 Aspect ratio */
+  width: auto; /* Width follows height */
+  border-radius: 12px;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .ceo-photo {
-  width: auto;
+  width: 100%;
   height: 100%;
+  object-fit: cover; /* Ensure image covers the square area */
   border-radius: clamp(12px, 2vw, 24px);
   display: block;
 }
@@ -1404,6 +1444,9 @@ button {
   width: 100%;
   max-width: clamp(600px, 57vw, 1094px);
   flex: 1;
+  display: flex; /* Ensure content distribution */
+  flex-direction: column;
+  justify-content: space-between; /* Push footer to bottom */
 }
 
 .quote-mark {
@@ -1428,6 +1471,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: auto; /* Ensure it sticks to bottom if parent has extra space */
 }
 
 @media (max-width: 1536px) {
@@ -1462,12 +1506,14 @@ button {
   }
 
   .ceo-photo-wrapper {
-    width: 100%;
-    height: auto;
+    width: 100%; /* 100% width on mobile */
+    height: auto; /* Auto height on mobile */
+    aspect-ratio: 1/1;
   }
   .ceo-photo {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
   }
 
   .feedback-card {
@@ -1570,9 +1616,9 @@ button {
   padding-bottom: 24px;
 }
 
-.faq-item.active .faq-question {
+/* .faq-item.active .faq-question {
   color: var(--color-blue);
-}
+} */
 
 @media (max-width: 1024px) {
   .faq-container {
@@ -1789,7 +1835,8 @@ button {
   font-size: 18px;
   font-weight: 600;
   color: var(--color-blue);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  line-height: 16px;
 }
 
 .footer-links {
