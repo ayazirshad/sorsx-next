@@ -887,11 +887,14 @@ button {
 /* ========== HERO SECTION (REDESIGNED) ========== */
 
 .hero-section {
-  margin-top: clamp(100px, 6.7vw, 130px);
+  margin-top: clamp(60px, 5.2vw, 130px);
+  padding-top: 40px;
   background-image:
-    linear-gradient(to right, #f2f4f7 1px, transparent 1px),
-    linear-gradient(to bottom, #f2f4f7 1px, transparent 1px);
-  background-size: 120px 120px; /* ye grid size hy */
+    linear-gradient(to right, #f1f3f5 1px, transparent 1px),
+    linear-gradient(to bottom, #f1f3f5 1px, transparent 1px);
+  background-size: 130px 130px;
+  /* ye grid size hy */
+  /* background: red; */
 }
 
 .text-center {
@@ -998,11 +1001,11 @@ button {
   margin: 0px auto;
   padding: 30px 0;
   position: relative;
-  background-image:
+  /* background-image:
     linear-gradient(to right, #f2f4f7 1px, transparent 1px),
     linear-gradient(to bottom, #f2f4f7 1px, transparent 1px);
-  background-size: 120px 120px;
-  /* background: var(--color-bg); */
+  background-size: 120px 120px; */
+  background: transparent;
   width: 100%;
   display: grid;
   place-items: center;
