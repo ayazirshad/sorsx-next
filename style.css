@@ -557,18 +557,19 @@ p {
 }
 
 @media (max-width: 1536px) {
-  .dropdown {
+  .dropdown-toggle {
     padding: 6px 10px;
   }
 }
 
 @media (min-width: 769px) {
-  .dropdown:hover .dropdown-menu {
+  /* Click-based interaction controlled via JS (.open class) */
+  .dropdown.open .dropdown-menu {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-  .dropdown:hover .dropdown-icon {
+  .dropdown.open .dropdown-icon {
     transform: rotate(180deg);
   }
 }
@@ -595,21 +596,21 @@ p {
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 130%;
   left: 0;
   background-color: #fff;
   color: var(--color-primary);
   padding: 0.5rem;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 24px 56px 0 rgba(167, 174, 186, 0.16);
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  /* border: 1px solid #e5e7eb; */
   flex-direction: column;
   z-index: 10;
   min-width: 180px;
 }
 
 .dropdown-menu a {
-  padding: 8px 12px;
+  padding: 0px;
   color: var(--color-primary);
   border-radius: 6px;
   text-decoration: none;
@@ -1966,3 +1967,142 @@ button {
     grid-template-columns: 1fr;
   }
 }
+
+/* ========== MEGA MENU OVERRIDES ========== */
+
+.dropdown-menu.mega-menu {
+  width: max-content;
+  /* min-width: 600px; */
+  padding: 32px;
+  margin-top: 12px; /* Gap from navbar */
+  background-color: #fff;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  /* border: 1px solid #f2f4f7; */
+  border-radius: 16px;
+  overflow: visible; /* Allow arrow to stick out */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 1536px) {
+  .dropdown-menu.mega-menu {
+    padding: 24px;
+    margin-top: 12px;
+    border-radius: 12px;
+  }
+}
+
+/* Tooltip Arrow */
+.dropdown-menu.mega-menu::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%; /* center relative to dropdown */
+  width: 12px;
+  height: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  transform: translateX(-50%) rotate(45deg);
+  /* border-left: 1px solid #f2f4f7;
+  border-top: 1px solid #f2f4f7; */
+}
+
+.mega-menu-grid {
+  display: flex;
+  justify-content: stretch;
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 24px;
+}
+
+.mega-menu-column {
+  min-width: 256px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Specific styling for mega menu links to override general dropdown link styles if needed */
+.dropdown-menu.mega-menu .mega-menu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 4px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: normal; /* Allow text wrapping for descriptions */
+  transition: background-color 0.2s;
+  background-color: transparent;
+  color: inherit; /* Inherit or force specific color */
+}
+
+@media (max-width: 1536px) {
+  .mega-menu-grid {
+    gap: 18px;
+  }
+  .mega-menu-column {
+    min-width: 236px;
+    gap: 12px;
+  }
+
+  .mega-menu-item {
+    gap: 8px;
+  }
+}
+
+.dropdown-menu.mega-menu .mega-menu-item:hover {
+  background-color: var(--color-accent-hover, #f2f4f7);
+}
+
+.mega-menu-icon {
+  width: 26px; /* Container size */
+  height: 26px;
+  flex-shrink: 0;
+  margin-top: 0;
+  object-fit: contain;
+  background-color: #6087f4; /* Blue background */
+  padding: 5px; /* Padding for the icon inside */
+  border-radius: 6px; /* Rounded corners */
+}
+
+.mega-menu-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu-title {
+  color: #181d27;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.mega-menu-desc {
+  color: #535862;
+  margin: 0;
+  white-space: normal;
+  /* line-height: 1.4; */
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu.mega-menu {
+    position: static;
+    width: 100%;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 0 1rem;
+    margin-top: 0;
+  }
+
+  /* Hide the arrow on mobile */
+  .dropdown-menu.mega-menu::before {
+    display: none;
+  }
+
+  .mega-menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+

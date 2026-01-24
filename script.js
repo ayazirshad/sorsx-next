@@ -1,27 +1,27 @@
 // FAQ Section logic handled at the bottom of the file
 
 // Dropdown functionality for all dropdowns
-// document.querySelectorAll(".dropdown").forEach((dropdown) => {
-//   const toggle = dropdown.querySelector(".dropdown-toggle");
+document.querySelectorAll(".dropdown").forEach((dropdown) => {
+  const toggle = dropdown.querySelector(".dropdown-toggle");
 
-//   if (toggle) {
-//     toggle.addEventListener("click", (e) => {
-//       e.stopPropagation();
-//       // Close other dropdowns
-//       document.querySelectorAll(".dropdown").forEach((d) => {
-//         if (d !== dropdown) d.classList.remove("open");
-//       });
-//       dropdown.classList.toggle("open");
-//     });
-//   }
-// });
+  if (toggle) {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      // Close other dropdowns
+      document.querySelectorAll(".dropdown").forEach((d) => {
+        if (d !== dropdown) d.classList.remove("open");
+      });
+      dropdown.classList.toggle("open");
+    });
+  }
+});
 
-// // Close dropdowns when clicking outside
-// document.addEventListener("click", () => {
-//   document.querySelectorAll(".dropdown").forEach((dropdown) => {
-//     dropdown.classList.remove("open");
-//   });
-// });
+// Close dropdowns when clicking outside
+document.addEventListener("click", () => {
+  document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    dropdown.classList.remove("open");
+  });
+});
 
 const menuBtn = document.getElementById("menuToggleBtn");
 const menu = document.getElementById("mobileMenu");
