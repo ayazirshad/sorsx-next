@@ -399,6 +399,7 @@ p {
 /* ========== NAv-container ========== */
 
 .logo {
+  display: block;
   height: 19px;
 }
 
@@ -585,7 +586,6 @@ p {
     align-items: center;
     border-radius: 0; /* Reset radius */
     background-color: transparent;
-    transition: all 0.3s ease;
   }
 
   .nav-links a:hover,
@@ -615,7 +615,9 @@ p {
     padding: 12px;
     margin-bottom: 8px;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .cta-btn-mobile .nav-button {
@@ -646,7 +648,89 @@ p {
   .cta-btn {
     display: none;
   }
+}
 
+.dropdown {
+  position: relative;
+  transform: 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.dropdown:hover {
+  background-color: var(--color-accent-hover);
+}
+
+@media (max-width: 1536px) {
+  .dropdown {
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Click-based interaction controlled via JS (.open class) */
+  .dropdown.open .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .dropdown.open .dropdown-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background-color: #fff;
+  color: var(--color-primary);
+  padding: 0.5rem;
+  box-shadow: 0px 24px 56px 0 rgba(167, 174, 186, 0.16);
+  border-radius: 8px;
+  /* border: 1px solid #e5e7eb; */
+  flex-direction: column;
+  z-index: 10;
+  min-width: 180px;
+}
+
+.dropdown-menu a {
+  padding: 0px;
+  color: var(--color-primary);
+  border-radius: 6px;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f3f4f6;
+  color: #000;
+}
+
+@media (max-width: 768px) {
   .dropdown {
     width: 100%;
     padding: 0;
@@ -654,12 +738,13 @@ p {
 
   .dropdown-toggle {
     width: 100% !important;
+    transition: all 0.3s ease;
   }
 
   .dropdown.open .dropdown-toggle {
     background-color: #f9fafb !important;
     color: #4e6be9 !important;
-    border-bottom-color: transparent;
+    border-bottom-color: transparent; /* Remove border when menu is open */
   }
 
   .dropdown.open .dropdown-menu {
@@ -777,7 +862,7 @@ button {
 .white-button {
   font-family: var(--font-primary);
   background: #fff;
-  color: #101828;
+  color: #3d444f;
   border: 1px solid #d0d5dd;
   border-radius: 12px;
   font-size: 16px;
